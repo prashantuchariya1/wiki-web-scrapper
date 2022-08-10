@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>|Wikipedia_Scrapper|</title>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <style>
+
+      *{
+        text-decoration: none;
+      }
+      body{
+
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      }
+      header{
+
+        background: indigo;
+        width: 100%;
+        margin: 0;
+        height: 5em;
+      }
+
+      header h1{
+          font-family: 'Righteous', cursive;
+          margin-left: 6%;
+          color: white;
+          text-shadow: 1px 1px black;
+          letter-spacing: 1px;
+      }
+
+    
+      form{
+
+        padding: 0;
+        margin-top: 10%;
+      }
+      input{
+
+       height: 3.2em;
+       width: 25em;
+       font-family: 'Noto Sans', sans-serif;
+       padding: 10px;
+       font-size: 15px;
+       outline: none;
+       border: 1px solid black;
+      }
+      input:focus{
+        border: 2px solid indigo;
+        
+      }
+        button{
+        height: 3.5em;
+        width: 3.5em;
+        background: indigo;
+        border: none;
+        position: relative;
+        top: 0.3em;
+        cursor: pointer;
+      }
+
+
+      .body h1{
+
+          font-family: 'Righteous', cursive;
+          letter-spacing: 1px;
+      }
+      .body{
+
+        width: 80%;
+        min-height: 10em;
+        background: indigo;
+        display: flex;
+      flex-direction: column;
+      padding: 2em;
+      align-items: center;
+      margin-bottom: 5em;
+      color: white;
+      }
+      .body p{
+
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 15.5px;
+        text-align: center;
+      }
+      .body img{ 
+
+        border: 2px solid white;
+        
+      }
+
+      @media only screen and (max-width:768px){
+
+        header{
+
+          height: 3.5em;
+          text-align: center;
+        }
+
+         header h1{
+
+           font-size: 20px;
+         }
+
+         .body h1{
+
+           font-size: 20px;
+         }
+
+         form input{
+
+           width:18em;
+           height: 2.5em;
+         }
+         form button{
+      height: 2.9em;
+       width: 2.5em;
+
+         }
+
+         .body p{
+
+           font-size: 13px;
+         }
+      }
+    
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Wikipedia Web Scraper</h1>
+    </header>
+    <form method="POST" onsubmit="search(this);">
+      <input autocomplete="off" placeholder="Search" type="search" id="Item" />
+      <button type="submit"><img src="search.png" height="23px" width="23px"></button>
+    </form>
+    <br />
+    <br />
+    <div class="body">
+      <h1><%- JSON.stringify(data.Heading).replace(/"/g,"") %></h1>
+    <img src= <%- JSON.stringify(data.Image) %>
+    height="300px" width="250px" alt="" /><br />
+    <p><%- JSON.stringify(data.Paragraph1).replace(/"/g,"") %></p>
+    <br />
+
+    <p><%- JSON.stringify(data.Paragraph2).replace(/"/g,"") %></p>
+    <br />
+    <p><%- JSON.stringify(data.Paragraph3).replace(/"/g,"") %></p></extra>
+    <br />
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      function search(form) {
+        var Id = document.getElementById("Item").value;
+        form.action = `/${Id}`;
+      }
+    </script>
+  </body>
+</html>
